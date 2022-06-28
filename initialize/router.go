@@ -8,4 +8,10 @@ import (
 
 func Router(app *iris.Application) {
 	app.Get("/swagger/*", swagger.WrapHandler(swaggerFiles.Handler))
+
+	api := app.Party("/api")
+	usersApi := api.Party("/users")
+	{
+		usersApi.Get("/")
+	}
 }
